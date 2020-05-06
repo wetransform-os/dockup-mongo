@@ -2,7 +2,7 @@
 
 source ./mongoconfig.sh
 
-MONGO_RESTORE_CMD="mongorestore --host ${MONGODB_HOST} --port ${MONGODB_PORT} ${USER_STR}${PASS_STR} /dockup/${MONGO_BACKUP_NAME}"
+MONGO_RESTORE_CMD="mongorestore --host ${MONGODB_HOST} --port ${MONGODB_PORT} ${USER_STR}${PASS_STR} /dockup/work/${MONGO_BACKUP_NAME}"
 
 echo "Restoring MongoDB database dump..."
 eval "time $MONGO_RESTORE_CMD"

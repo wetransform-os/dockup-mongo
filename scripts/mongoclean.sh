@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # remove dump
-rm -rf "/dockup/${MONGO_BACKUP_NAME}"
+rm -rf "/dockup/work/${MONGO_BACKUP_NAME}"

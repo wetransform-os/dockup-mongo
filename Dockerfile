@@ -9,8 +9,11 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75
 
 ADD /scripts /dockup/
 RUN chmod 755 /dockup/*.sh
+RUN mkdir -p /dockup/work
 
-ENV PATHS_TO_BACKUP /dockup/mongodump
+VOLUME /dockup/work
+
+ENV PATHS_TO_BACKUP /dockup/work/mongodump
 ENV MONGO_BACKUP_NAME mongodump
 ENV BEFORE_BACKUP_CMD ./mongodump.sh
 ENV AFTER_BACKUP_CMD ./mongoclean.sh
