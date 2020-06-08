@@ -1,4 +1,4 @@
-FROM wetransform/dockup:latest
+FROM wetransform/dockup:20200608
 MAINTAINER Simon Templer <simon@wetransform.to>
 
 # install MongoDB shell & tools
@@ -9,14 +9,11 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75
 
 ADD /scripts /dockup/
 RUN chmod 755 /dockup/*.sh
-RUN mkdir -p /dockup/work
 
-VOLUME /dockup/work
-
-ENV PATHS_TO_BACKUP /dockup/work/mongodump
+ENV PATHS_TO_BACKUP $WORK_DIR/mongodump
 ENV MONGO_BACKUP_NAME mongodump
-ENV BEFORE_BACKUP_CMD ./mongodump.sh
-ENV AFTER_BACKUP_CMD ./mongoclean.sh
-ENV AFTER_RESTORE_CMD ./mongorestore.sh
+ENV BEFORE_BACKUP_CMD /dockup/mongodump.sh
+ENV AFTER_BACKUP_CMD /dockup/mongoclean.sh
+ENV AFTER_RESTORE_CMD /dockup/mongorestore.sh
 ENV MONGODB_HOST mongodb
 ENV MONGODB_PORT 27017

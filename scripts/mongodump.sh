@@ -1,8 +1,8 @@
 #!/bin/bash
 
-source ./mongoconfig.sh
+source /dockup/mongoconfig.sh
 
-MONGO_BACKUP_CMD="mongodump --out /dockup/work/"'${MONGO_BACKUP_NAME}'" --host ${MONGODB_HOST} --port ${MONGODB_PORT} ${USER_STR}${PASS_STR}${AUTH_DB_STR}${DB_STR} ${MONGODB_DUMP_EXTRA_OPTS}"
+MONGO_BACKUP_CMD="mongodump --out "'${WORK_DIR}/${MONGO_BACKUP_NAME}'" --host ${MONGODB_HOST} --port ${MONGODB_PORT} ${USER_STR}${PASS_STR}${AUTH_DB_STR}${DB_STR} ${MONGODB_DUMP_EXTRA_OPTS}"
 
 echo "Creating MongoDB database dump..."
 eval "time $MONGO_BACKUP_CMD"

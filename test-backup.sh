@@ -5,6 +5,8 @@
 # Before running it, ensure there is a file test-env.txt
 # with configuration options as in test-env.txt.sample
 
+set -e
+
 # build dockup image
 docker build -t wetransform/dockup-mongo:local .
 
