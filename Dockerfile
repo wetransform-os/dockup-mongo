@@ -1,9 +1,9 @@
-FROM wetransform/dockup:20200608
+FROM wetransform/dockup:20230515
 MAINTAINER Simon Templer <simon@wetransform.to>
 
 # install MongoDB shell & tools
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4 && \
-  echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/4.0 main" | tee /etc/apt/sources.list.d/mongodb-org-4.0.list && \
+RUN curl -fsSL https://pgp.mongodb.com/server-5.0.asc | gpg -o /usr/share/keyrings/mongodb-server-5.0.gpg --dearmor && \
+  echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-5.0.gpg] http://repo.mongodb.org/apt/debian bullseye/mongodb-org/5.0 main" | tee /etc/apt/sources.list.d/mongodb-org-5.0.list && \
   apt-get update && \
   apt-get install -y mongodb-org-shell mongodb-org-tools
 
